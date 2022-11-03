@@ -1,11 +1,10 @@
 package net.doubledoordev.saymyname;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import net.minecraft.server.packs.resources.ReloadableResourceManager;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("setmyname")
@@ -24,6 +23,6 @@ public class SetMyName
 
     public void reload(AddReloadListenerEvent event)
     {
-        ((ReloadableResourceManager) event.getDataPackRegistries().getResourceManager()).registerReloadListener(new NameDumper());
+        event.addListener(new NameDumper());
     }
 }
